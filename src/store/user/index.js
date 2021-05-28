@@ -11,6 +11,7 @@ const getters = {
 
 }
 
+
 const mutations = {
   authenticatedUser (state) {
     const user = firebase.auth().currentUser
