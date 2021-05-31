@@ -30,65 +30,62 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions } from "vuex";
 
 export default {
-    name: 'login',
-    data() {
-        return{
-            errors: [],
-            password: '',
-            email: ''
+  name: "login",
+  data() {
+    return {
+      errors: [],
+      password: "",
+      email: "",
+    };
+  },
+  methods: {
+    ...mapActions("user", {
+      login: "login",
+    }),
+
+    submitLogin(e) {
+      this.errors = [];
+
+      if (!this.email) {
+        this.errors.push("Email required.");
+      }
+      if (!this.password) {
+        this.errors.push("Password required.");
+      }
+
+      e.preventDefault();
+
+      this.login({
+        email: this.email,
+        password: this.password,
+      }).then(
+        (response) => {
+          if (this.$store.state.user.loggedIn) {
+            this.$router.replace("/");
+            location.reload();
+          }
+        },
+        (error) => {
+          this.errors.push(error.message);
         }
-    },  
-    methods: {
-        ...mapActions('user', {
-            login: 'login'
-        }),
-
-        submitLogin(e){
-            this.errors = [];
-
-            if (!this.email) {
-                this.errors.push('Email required.');
-            }
-            if (!this.password) {
-                this.errors.push('Password required.');
-            }
-
-            e.preventDefault();
-            
-            this.login({
-                email: this.email,
-                password: this.password
-            })
-            .then(response => {
-                if( this.$store.state.user.loggedIn ){
-                    if(this.$store.state.user.u_email == "test@ukr.net") {
-                        this.$store.state.user.isAdmin = true;
-                    }
-                    console.log(this.$store);
-                    this.$router.replace('/');   
-                    location.reload();
-                }
-            }, error => {
-                this.errors.push(error.message);
-            })
-        }
-    }
-}
+      );
+    },
+  },
+};
 </script>
 
 <style scoped>
-    .theme--light.v-label {
-            left: 12px;
-    }
-    .custom-error{
-        margin-top: 10px;
-    }
+.theme--light.v-label {
+  left: 12px;
+}
+.custom-error {
+  margin-top: 10px;
+}
 
-    .custom-error p{
-        color: red
-    }
-
+.custom-error p {
+  color: red;
+}
 </style>
