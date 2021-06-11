@@ -21,6 +21,7 @@ const mutations = {
     if (user != null) {
       state.user.u_id = user.uid;
       state.user.u_email = user.email;
+      state.user.u_name = user.name;
       state.loggedIn = true;
       console.log(user.email);
     }
@@ -83,27 +84,6 @@ const actions = {
   }
 };
 
-/*const functions = require('firebase-functions'); 
-const admin = require('firebase-admin');
-
-admin.initializeApp() 
-
-exports.AddUserRole = functions.auth.user().onCreate(async (authUser) => {
-  if (authUser.email) {
-    const customClaims = {
-      admin: true,
-    };
-    try {
-      var _ = await admin.auth().setCustomUserClaims(authUser.uid, customClaims)
-      return db.collection("roles").doc(authUser.uid).set({
-        email: authUser.email,
-        role: customClaims
-      })
-    } catch (error) {
-      console.log(error)
-    }
-  }
-});*/
 
 export default {
   namespaced: true,

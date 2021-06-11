@@ -7,6 +7,7 @@ import Login from '@/components/Login'
 import Register from '@/components/Register'
 import CreateQuiz from '@/components/CreateQuiz'
 import SingleQuiz from '@/components/SingleQuiz'
+import ForgotPassword from '@/components/ForgotPassword'
 import store from '@/store'
 
 Vue.use(Router)
@@ -54,6 +55,15 @@ const router = new Router({
       component: SingleQuiz,
       meta: {
         requiresAuth: true
+      }  
+    }
+    ,
+    {
+      path: '/forgot-password',
+      name: 'forgot-password',
+      component: ForgotPassword,
+      meta: {
+        requiresAuth: false
       }  
     }
   ],

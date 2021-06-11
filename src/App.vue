@@ -87,12 +87,15 @@ button:hover {
   align-items: center;
 }
 .v-btn.v-btn__main {
+  display: flex;
+  margin: 0 auto;
   background-color: #f9fbe7 !important;
   border: 1px solid #827717;
   border-radius: 12px !important;
   min-width: 100px;
   padding: 15px 40px;
   height: 50px;
+
 }
 .v-btn.v-btn__main:hover {
   background-color: #827717 !important;

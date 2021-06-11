@@ -4,6 +4,11 @@
              <v-img max-width="400px" width="100%" :src="require('@/assets/eng.jpg')"></v-img>
 
             <v-text-field
+                v-model="name"
+                label="Name"
+                required
+            ></v-text-field>  
+            <v-text-field
                 v-model="email"
                 label="E-mail"
                 required
@@ -16,6 +21,7 @@
                 required
             ></v-text-field>  
             <v-btn @click="submitRegister" class="v-btn__main">Register</v-btn>
+            
             
             <div class="custom-error">
                 <p v-if="errors.length">
@@ -39,7 +45,8 @@ export default {
         return{
             errors: [],
             password: '',
-            email: ''
+            email: '',
+            name: ''
         }
     },  
     methods: {
@@ -56,12 +63,16 @@ export default {
             if (!this.password) {
                 this.errors.push('Password required.');
             }
+            if (!this.name) {
+                this.errors.push('Name required.');
+            }
 
             e.preventDefault();
 
             this.resgister({
                 email: this.email,
-                password: this.password
+                password: this.password,
+                name: this.name
             })
             .then(response => {
                 if( this.$store.state.user.loggedIn ){
