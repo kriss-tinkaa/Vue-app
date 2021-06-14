@@ -8,14 +8,15 @@
         <v-toolbar-items class="hidden-sm-and-down">
           <v-btn v-if="loggedIn == true" flat to="/">All tests</v-btn>
           <v-btn v-if="loggedIn == true" flat to="/about">Links</v-btn>
+          <v-btn v-if="isAdmin == true" to="/create-quiz" flat
+            >Create quiz</v-btn
+          >
           <v-btn v-if="loggedIn == true" flat @click="submitLogout"
             >Logout</v-btn
           >
           <v-btn v-if="loggedIn == false" to="/login" flat>Login</v-btn>
           <v-btn v-if="loggedIn == false" to="/register" flat>Register</v-btn>
-          <v-btn v-if="isAdmin == true" to="/create-quiz" flat
-            >Create quiz</v-btn
-          >
+          
           <v-avatar v-if="loggedIn == true" color="lime" style="margin: 8px 0">
             <img
               src="https://img.icons8.com/small/16/000000/user-male-circle.png"

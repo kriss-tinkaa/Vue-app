@@ -4,6 +4,7 @@
             <h3>Forgot Password</h3>
             <v-text-field
                 v-model="user.email"
+                class="mt-n12 mx-auto"
                 label="E-mail"
                 required
                 darken-4
@@ -67,6 +68,7 @@ button:hover {
 }
 .v-btn.v-btn__main:hover {
   background-color: #827717 !important;
+  color: #fff;
   cursor: pointer;
 }
 
